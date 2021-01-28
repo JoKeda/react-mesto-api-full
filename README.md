@@ -6,4 +6,4 @@
 
 Технологии: MongoDB, JavaScript, React, Git, Node.js, API REST.
 
-Домен: http://jokeda.students.nomoreparties.co
+Домен: http://jokeda.students.nomoredomains.icu
