@@ -11,6 +11,11 @@ const {PORT,DB} = require("./config/index")
 
 app.use(cors());
 app.use(express.json({ extended: true }));
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.use(requestLogger);
 app.use(userRouter, cardsRouter, unknownRouter);
 
