@@ -1,0 +1,14 @@
+@import url(./__data/element__data.css);
+@import url(./__image/element__image.css);
+@import url(./__title/element__title.css);
+@import url(./__like-info/element__like-info.css);
+@import url(./__like/element__like.css);
+@import url(./__like-score/element__like-score.css);
+@import url(./__delete/element__delete.css);
+
+.element {
+    position: relative;
+    background-color: white;
+    padding-bottom: 8px;
+    border-radius: 10px;
+}

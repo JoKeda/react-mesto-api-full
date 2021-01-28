@@ -1,0 +1,13 @@
+.login__input {
+    color: #fff;
+    border-bottom: 2px solid #cccccc;
+    background: none;
+    width:100%;
+}
+
+@media screen and (max-width: 550px) {
+    .login__input {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

@@ -1,0 +1,44 @@
+.notification_container{
+    position: fixed;
+    top: 30px;
+    right: 35px;
+    z-index: 999;
+    overflow: hidden;
+}
+.notification_box{
+    background-color: #151515;
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    color: #fff;
+    transition:  all 400ms cubic-bezier(.47,1.64,.41,.8);
+}
+.notification_icon_box{
+    margin-right: 15px;
+}
+.notification_icon{
+    width: 28px;
+    height: 28px;
+}
+
+.notification_text_box{
+    max-width: 200px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    word-break: break-word;
+    font-size: 14px;
+}
+.notification_hidden{
+    transform: translateX(110%);
+}
+.notification_visible{
+    transform: translateX(0);
+}
+.notification_close_button{
+    cursor: pointer;
+    opacity: 0.8;
+    transition: .3s ease;
+}
+.notification_close_button:hover{
+    opacity: 1;
+}

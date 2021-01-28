@@ -1,0 +1,17 @@
+.popup__error {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  max-width: 83%;
+  padding: 0;
+  margin: 0 0 10px 0;
+  display: none;
+}
+
+.popup__error:last-of-type {
+  margin: 0 0 28px 0;
+}
+
+

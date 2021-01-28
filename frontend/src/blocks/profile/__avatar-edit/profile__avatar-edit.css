@@ -1,0 +1,16 @@
+.profile__avatar-edit {
+    background: url(../../../images/avatar-edit.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 26px;
+    width: 26px;
+    position: absolute;
+    transform: translate(50px, 0px);
+    z-index: 1;
+}
+
+@media screen and (max-width: 700px) {
+    .profile__avatar-edit {
+        margin: 47px 90px 0 0;
+    }
+  }
