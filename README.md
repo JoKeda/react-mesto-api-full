@@ -6,4 +6,6 @@
 
 Технологии: MongoDB, JavaScript, React, Git, Node.js, API REST.
 
-Домен: http://jokeda.students.nomoredomains.icu
+Адрес: https://jokeda.students.nomoredomains.icu
+IP: https://api.jokeda.students.nomoredomains.icu
+Публичный IPv4: 130.193.49.170

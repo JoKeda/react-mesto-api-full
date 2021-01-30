@@ -1,10 +1,10 @@
 const { model, Schema, Types } = require('mongoose');
-const linkValidator = require('../helpers/linkValidator');
+const { linkValidator } = require('../validation/index');
 
 const cardSchema = new Schema({
   name: {
     type: String,
-    minlength: 3,
+    minlength: 2,
     maxlength: 30,
     required: true,
   },

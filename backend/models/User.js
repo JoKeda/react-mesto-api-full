@@ -1,27 +1,35 @@
 const { model, Schema } = require('mongoose');
-const linkValidator = require('../helpers/linkValidator');
+const { linkValidator, emailValidator } = require('../validation/index');
 
 const userSchema = new Schema({
   email: {
     type: String,
     required: true,
     unique: true,
+    validate: {
+      validator: emailValidator,
+      message: 'Некоректный email',
+    },
   },
   password: {
     type: String,
     required: true,
     minlength: 8,
-    select:false
+    select: false,
   },
   name: {
     type: String,
     minlength: 2,
     maxlength: 30,
-    default:'Жак-Ив Кусто'
+    default: 'Жак-Ив Кусто',
+    required: true,
   },
   about: {
     type: String,
-    default:'Исследователь'
+    default: 'Исследователь',
+    minlength: 3,
+    maxlength: 30,
+    required: true,
   },
   avatar: {
     type: String,
@@ -29,7 +37,7 @@ const userSchema = new Schema({
       validator: linkValidator,
       message: 'Некорректная ссылка',
     },
-    default:'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png'
+    default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
   },
 });
 

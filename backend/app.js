@@ -1,31 +1,27 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const { errors } = require('celebrate');
+const cors = require('cors');
 const userRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const unknownRouter = require('./routes/unknown');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { errors } = require('celebrate');
-const cors = require('cors')
+
 const app = express();
-const {PORT,DB} = require("./config/index")
+const { PORT, DB } = require('./config/index');
 
 app.use(cors());
 app.use(express.json({ extended: true }));
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
 app.use(requestLogger);
 app.use(userRouter, cardsRouter, unknownRouter);
 
-const errorHandler = async (err, req, res, next) => {
-  if(err.status){
-  res.status(err.status).send({ message: err.message });
-  }else{
-    res.status(500).send({message:'Что-то пошло не так.'})
+const errorHandler = async (err, req, res) => {
+  if (err.status) {
+    res.status(err.status).send({ message: err.message });
+  } else {
+    res.status(500).send({ message: 'Что-то пошло не так.' });
   }
-}
+};
 app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
@@ -48,4 +44,3 @@ const start = async () => {
 };
 
 start();
-
