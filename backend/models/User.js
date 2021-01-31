@@ -22,14 +22,12 @@ const userSchema = new Schema({
     minlength: 2,
     maxlength: 30,
     default: 'Жак-Ив Кусто',
-    required: true,
   },
   about: {
     type: String,
     default: 'Исследователь',
     minlength: 3,
     maxlength: 30,
-    required: true,
   },
   avatar: {
     type: String,

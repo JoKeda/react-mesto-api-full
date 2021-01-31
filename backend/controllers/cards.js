@@ -68,8 +68,11 @@ const dislikeCard = async (req, res, next) => {
       .findByIdAndUpdate(cardId,
         { $pull: { likes: userId } },
         { new: true, runValidators: true }).populate(['owner', 'likes']);
-    if (!card) next(new NotFoundError('Карточка не найдена'));
+    if (!card) {
+      next(new NotFoundError('Карточка не найдена'));
+    }else{
     return res.status(200).send(card);
+    }
   } catch (e) {
     next(e);
   }

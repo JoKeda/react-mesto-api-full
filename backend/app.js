@@ -15,12 +15,13 @@ app.use(express.json({ extended: true }));
 app.use(requestLogger);
 app.use(userRouter, cardsRouter, unknownRouter);
 
-const errorHandler = async (err, req, res) => {
+const errorHandler = async (err, req, res, next) => {
   if (err.status) {
     res.status(err.status).send({ message: err.message });
   } else {
     res.status(500).send({ message: 'Что-то пошло не так.' });
   }
+  if(next) next()
 };
 app.use(errorLogger);
 app.use(errors());

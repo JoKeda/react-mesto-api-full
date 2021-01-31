@@ -38,8 +38,11 @@ const getProfile = async (req, res, next) => {
   try {
     if (!ObjectId.isValid(req.params.id)) next(new NotFoundError('Неправильное значение ID'));
     const user = await User.findById(userId);
-    if (!user) next(new NotFoundError('Пользователь с таким ID не найден'));
+    if (!user) {
+      next(new NotFoundError('Пользователь с таким ID не найден'));
+    }else {
     return res.send(user);
+    }
   } catch (e) {
     next(e);
   }
@@ -74,13 +77,14 @@ const signin = async (req, res, next) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       next(new UnauthorizedError('Неправильный почта/пароль'));
-    }
+    }else{
     const token = jwt.sign(
       { _id: user?._id },
       jwtSecret,
       { expiresIn: '7d' },
     );
     return res.send({ token });
+    }
   } catch (e) {
     next(e);
   }
@@ -91,8 +95,11 @@ const updateUser = async (req, res, next) => {
   try {
     const user = await User
       .findByIdAndUpdate(userId, { $set: req.body }, { new: true, runValidators: true });
-    if (!user) next(new NotFoundError('Пользователь не найден'));
+    if (!user) {
+      next(new NotFoundError('Пользователь не найден'));
+    }else{
     return res.send(user);
+    }
   } catch (e) {
     next(e);
   }
